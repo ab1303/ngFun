@@ -1,8 +1,8 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core'
+import { Component, Input } from '@angular/core'
 
 @Component({
-    selector:'event-thumbnail',
-    template: `
+  selector: 'event-thumbnail',
+  template: `
     <div class="well hoverwell thumbnail">
       <h2>{{event?.name}}</h2>
       <div>Date: {{event?.date}}</div>
@@ -17,7 +17,6 @@ import { Component, Input, EventEmitter, Output } from '@angular/core'
         <span>Location: {{event?.location?.address}}</span>
         <span class="pad-left">{{event?.location?.city}}, {{event?.location?.country}}</span>
       </div>
-      <button class="btn btn-primary" (click) = "handleClickMe()"> Click Me ! </button>
       <div *ngIf="event?.onlineUrl">
         Online URL: {{event?.onlineUrl}}
       </div>
@@ -27,23 +26,14 @@ import { Component, Input, EventEmitter, Output } from '@angular/core'
     .thumbnail { min-height: 210px; }
     .pad-left { margin-left: 10px; }
     .well div { color: #bbb; }
-    `]
+  `]
 })
-export class EventThumbnailComponent{
-    @Input() event : any
-    @Output() eventClick = new EventEmitter()
+export class EventThumbnailComponent {
+  @Input() event:any
 
-    handleClickMe(){
-        console.log('i was clicked!');
-        this.eventClick.emit({
-          message:'i was clicked inside EventThumbnailComponent!'
-        })
-    }
-
-    getStartTimeStyle() {
-      if (this.event && this.event.time === '8:00 am')
-        return {color: '#003300', 'font-weight': 'bold'}
-      return {}
-    }
-
+  getStartTimeStyle():any {
+    if (this.event && this.event.time === '8:00 am')
+      return {color: '#003300', 'font-weight': 'bold'}
+    return {}
+  }
 }
